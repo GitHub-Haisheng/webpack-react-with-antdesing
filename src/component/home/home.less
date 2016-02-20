@@ -1,0 +1,30 @@
+.clearfix {
+  display: block;
+  zoom: 1;
+
+  &:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+.homenewslist{
+  li{
+    .clearfix;
+    padding: 4px 6px;
+    border-bottom: 1px solid #ccc;
+    a{
+      float: left;
+    }
+    span{
+      float: right;
+    }
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+
+}

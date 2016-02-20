@@ -1,0 +1,5 @@
+# App
+node_modules
+dist/static/
+/*.log
+webpack-assets.json
