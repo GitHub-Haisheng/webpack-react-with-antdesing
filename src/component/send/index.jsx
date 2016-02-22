@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row,Col,Button,InputNumber,Upload, Icon, message, Input, DatePicker, Modal } from 'antd';
+import Sidermenu from '../menu/index';
 
 const props = {
   action: '/upload.do',
@@ -13,10 +14,13 @@ const props = {
   }
 };
 
+
 const Sendcontent = React.createClass({
   getInitialState() {
     return {
       visible: false,
+      current: this.props.current,
+      openKeys: this.props.openKeyss
      };
   },
   showModal() {
@@ -52,7 +56,7 @@ const Sendcontent = React.createClass({
               <Col style={{paddingTop:'20px'}} span="8">
                 <textarea  cols={11} style={{resize:'none',padding:'10px 80px 0px 10px',height:'300px'}}></textarea>
                 号码个数<InputNumber disabled={false} defaultValue={0} />
-              <Upload {...props} multiple={true}>
+                <Upload {...props} multiple={true}>
                   <Button type="ghost">
                     <Icon type="upload" /> 批量导入txt号码文件
                   </Button>

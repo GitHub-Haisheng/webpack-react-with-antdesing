@@ -34,47 +34,47 @@ const imgs = [
     {
     name: '短信群发',
     src: '/send',
-    img: './src/images/home_message.jpg'
+    img: require('../../images/home_message.jpg')
     },
     {
     name: '发件箱',
     src: '/send',
-    img: './src/images/home_electric.jpg'
+    img: require('../../images/home_electric.jpg')
     },
     {
     name: '收件箱',
     src: '/send',
-    img: './src/images/home_mode.jpg'
+    img: require('../../images/home_mode.jpg')
     },
     {
     name: '客户管理',
     src: '/send',
-    img: './src/images/home_user.jpg'
+    img: require('../../images/home_user.jpg')
     },
     {
     name: '客户导入',
     src: '/send',
-    img: './src/images/home_syspwd.jpg'
+    img: require('../../images/home_syspwd.jpg')
     },
     {
     name: '客户导出',
     src: '/send',
-    img: './src/images/home_changepwd.jpg'
+    img: require('../../images/home_changepwd.jpg')
     },
     {
     name: '当前余额',
     src: '/send',
-    img: './src/images/home_camera.jpg'
+    img: require('../../images/home_camera.jpg')
     },
     {
     name: '充值记录',
     src: '/send',
-    img: './src/images/home_metric.jpg'
+    img: require('../../images/home_metric.jpg')
     },
     {
     name: '消费记录',
     src: '/send',
-    img: './src/images/home_weather.jpg'
+    img: require('../../images/home_weather.jpg')
     },
 ];
 

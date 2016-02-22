@@ -3,6 +3,12 @@ import Sidermenu from '../menu/index';
 import Topheader from '../topheader/index';
 
 const App = React.createClass({
+  getInitialState() {
+    return {
+      current: '1',
+      openKeys: ['sub1']
+    };
+  },
   render() {
     return (
       <div>
@@ -10,7 +16,7 @@ const App = React.createClass({
             <Topheader />
           </div>
           <div className="sidermenu">
-            <Sidermenu openKeys={['']} current={''}  />
+            <Sidermenu openKeys={this.state.openKeys} current={this.state.current}  />
           </div>
           <div className="rightcontent">
               {this.props.children}

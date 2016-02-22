@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, Breadcrumb } from 'antd';
-import './topheader.css';
+import './topheader.less';
 import { Link } from 'react-router'
 
 const Topheader = React.createClass({
@@ -21,7 +21,7 @@ const Topheader = React.createClass({
         <div className="ant-layout-header">
           <div className="ant-layout-wrapper">
             <div className="ant-layout-logo">
-              <img src="./src/images/logo.png" />
+              <img src={require('../../images/logo.png')}></img>
             </div>
           </div>
         </div>
