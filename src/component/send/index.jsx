@@ -1,6 +1,12 @@
 import React from 'react';
 import { Row,Col,Button,InputNumber,Upload, Icon, message, Input, DatePicker, Modal } from 'antd';
+import { Lifecycle } from 'react-router'
+
 import Sidermenu from '../menu/index';
+import EventEmitter from '../../common/EventEmitter';
+
+
+
 
 const props = {
   action: '/upload.do',
@@ -19,8 +25,6 @@ const Sendcontent = React.createClass({
   getInitialState() {
     return {
       visible: false,
-      current: this.props.current,
-      openKeys: this.props.openKeyss
      };
   },
   showModal() {
@@ -119,11 +123,31 @@ const Sendcontent = React.createClass({
 });
 
 const Send = React.createClass({
+  mixins: [ Lifecycle ],
+
+  routerWillLeave(nextLocation) {
+      alert('离开？')
+  },
+
+  componentDidMount () {
+    // 此初始化数据
+    alert('首次载入，初始化的数据')
+  },
+
+  componentDidUpdate (prevProps) {
+    // 通过参数更新数据
+    alert('2')
+  },
+
+  componentWillUnmount () {
+    // 在组件移除前
+    alert('先前的组件要被移除')
+  },
   render() {
     return (
       <div>
         <Row>
-          <Col style={{paddingTop:'20px'}} span="18"><Sendcontent /></Col>
+          <Col style={{paddingTop:'20px'}} span="18"><Sendcontent  /></Col>
         </Row>
       </div>
     );

@@ -9,11 +9,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    alias: {
-            'react': 'react-lite',
-            'react-dom': 'react-lite',
-            'antd':path.resolve(__dirname, '../node_modules/antd/lib/index.js'),
-    }
+    // alias: {
+    //         'react': 'react-lite',
+    //         'react-dom': 'react-lite'
+    // }
   },
   module: {
     loaders: [
