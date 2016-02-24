@@ -6,22 +6,32 @@ import Topheader from '../topheader/index';
 const App = React.createClass({
   getInitialState() {
     return {
-      current: '1',
-      openKeys: ['sub1'],
+      current: '7',
+      openKeys: ['sub2']
     };
   },
-  componentDidUpdate (prevProps) {
-    // 通过参数更新数据
-    alert('整个应用组件有组件更新')
-  },
+  changemenuActive: function(a,b){
+		this.setState({
+      current: a,
+			openKeys: b
+		});
+	},
+  childContextTypes: {
+    changemenuActive:React.PropTypes.any
+	},
+	getChildContext: function(){
+		return {
+			changemenuActive:this.changemenuActive
+		}
+	},
   render() {
     return (
       <div>
           <div className="topheader">
             <Topheader />
           </div>
-          <div className="sidermenu">
-            <Sidermenu openKeys={this.state.openKeys} current={this.state.current}  />
+          <div className="sidermenu" >
+            <Sidermenu current={this.state.current} openKeys={this.state.openKeys} />
           </div>
           <div className="rightcontent">
             {this.props.children}

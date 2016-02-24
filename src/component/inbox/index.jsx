@@ -100,11 +100,7 @@ const Inbox = React.createClass({
   render() {
     return (
       <div>
-        <Topheader />
-        <Row>
-          <Col span="5"><Sidermenu openKeys={['sub1']} current={'3'} /></Col>
-          <Col style={{paddingTop:'20px'}} span="18"><Outboxcontent /></Col>
-        </Row>
+          <Outboxcontent />
       </div>
     );
   }

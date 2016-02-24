@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
-import { Link,History } from 'react-router'
+import { Link,History } from 'react-router';
 
 const Sidermenu = React.createClass({
   getInitialState() {
@@ -9,6 +9,10 @@ const Sidermenu = React.createClass({
       current: this.props.current,
       openKeys: this.props.openKeys
     };
+  },
+  componentDidUpdate (prevProps) {
+    // 通过参数更新数据
+    alert('2')
   },
   handleClick(e) {
     this.setState({

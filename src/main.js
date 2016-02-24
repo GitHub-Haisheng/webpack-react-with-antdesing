@@ -1,6 +1,13 @@
+//全局样式
 import './common/lib';
+//react
 import { ReactDOM,render } from 'react-dom';
 import React from 'react';
+//redux
+import { createStore, applyMiddleware } from 'redux';
+import { Provider }  from 'react-redux';
+
+//router
 import { Router, Route, useRouterHistory,IndexRoute} from 'react-router';
 import { createHashHistory } from 'history';
 
@@ -8,6 +15,8 @@ import { createHashHistory } from 'history';
 const appHistory = useRouterHistory(createHashHistory)({
   queryKey: false
 });
+
+
 
 import App from './component/app/index';
 import Home from './component/home/index';
@@ -36,34 +45,35 @@ import Passwordedit from './component/passwordedit/index';
 import News from './component/news/index';
 
 render((
-  <Router history={appHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Home} />
-      <Route path="send" component={Send}></Route>
-      <Route path="outbox" component={Outbox}></Route>
-      <Route path="inbox" component={Inbox}></Route>
-      <Route path="status" component={Status}></Route>
-      <Route path="draft" component={Draft}></Route>
 
-      <Route path="specialsend" component={Specialsend}></Route>
-      <Route path="cyclesend" component={Cyclesend}></Route>
-      <Route path="cycleoutbox" component={Cycleoutbox}></Route>
+    <Router history={appHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Home} />
+        <Route path="send" component={Send}></Route>
+        <Route path="outbox" component={Outbox}></Route>
+        <Route path="inbox" component={Inbox}></Route>
+        <Route path="status" component={Status}></Route>
+        <Route path="draft" component={Draft}></Route>
 
-      <Route path="customer" component={Customer}></Route>
-      <Route path="group" component={Group}></Route>
-      <Route path="customerimport" component={Customerimport}></Route>
-      <Route path="customerexport" component={Customerexport}></Route>
+        <Route path="specialsend" component={Specialsend}></Route>
+        <Route path="cyclesend" component={Cyclesend}></Route>
+        <Route path="cycleoutbox" component={Cycleoutbox}></Route>
 
-      <Route path="balance" component={Balance}></Route>
-      <Route path="chargehistory" component={Chargehistory}></Route>
-      <Route path="consumehistory" component={Consumehistory}></Route>
-      <Route path="usedetail" component={Usedetail}></Route>
-      <Route path="contact" component={Contact}></Route>
+        <Route path="customer" component={Customer}></Route>
+        <Route path="group" component={Group}></Route>
+        <Route path="customerimport" component={Customerimport}></Route>
+        <Route path="customerexport" component={Customerexport}></Route>
 
-      <Route path="passwordedit" component={Passwordedit}></Route>
+        <Route path="balance" component={Balance}></Route>
+        <Route path="chargehistory" component={Chargehistory}></Route>
+        <Route path="consumehistory" component={Consumehistory}></Route>
+        <Route path="usedetail" component={Usedetail}></Route>
+        <Route path="contact" component={Contact}></Route>
 
-      <Route path="news" component={News}></Route>
-</Route>
+        <Route path="passwordedit" component={Passwordedit}></Route>
 
-  </Router>
+        <Route path="news" component={News}></Route>
+      </Route>
+    </Router>
+
 ), document.getElementById('app'))
