@@ -2,17 +2,32 @@ import React from 'react';
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
 import { Link,History } from 'react-router';
+import EventEmitter from '../../common/EventEmitter';
 
 const Sidermenu = React.createClass({
   getInitialState() {
     return {
-      current: this.props.current,
-      openKeys: this.props.openKeys
+      current: '',
+      openKeys: []
     };
   },
-  componentDidUpdate (prevProps) {
-    // 通过参数更新数据
-    alert('2')
+  componentDidMount() {
+    var self = this;
+		EventEmitter.subscribe('menuActive', function(data){
+      self.setState({
+        current: data.current,
+        openKeys: data.openKeys
+			});
+		})
+	},
+  componentDidUpdate() {
+    var self = this;
+		EventEmitter.subscribe('menuActive', function(data){
+      self.setState({
+        current: data.current,
+        openKeys: data.openKeys
+			});
+		})
   },
   handleClick(e) {
     this.setState({

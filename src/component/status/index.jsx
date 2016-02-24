@@ -1,7 +1,6 @@
 import React from 'react';
-import { Row,Col,Button, DatePicker,Table, Icon, Input} from 'antd';
-import Sidermenu from '../menu/index';
-import Topheader from '../topheader/index';
+import { Row,Col,Button, DatePicker,Table, Icon, Input,QueueAnim} from 'antd';
+import EventEmitter from '../../common/EventEmitter';
 
 
 const dataSource = [{
@@ -94,18 +93,21 @@ const Statuscontent = React.createClass({
   render() {
     return (
       <div>
-        <Row>
-          <Col style={{paddingTop:'20px'}} span="8"><h1>状态查询</h1></Col>
-          <Col style={{paddingTop:'20px'}} span="10" offset="6">
-            号码<Input style={{width:'120px'}} />
-            时间<DatePicker  format="yyyy/MM/dd HH:mm:ss" />
-          <Button type="ghost">查询</Button>
-            <Button type="ghost">返回</Button>
+        <QueueAnim>
+        <Row key="status1">
+          <Col span="24">
+            <h1 className="floatleft">状态查询</h1>
+            <div className="floatright">
+              <lable>手机号码<input style={{ width: 120,display:'inline' }} className="ant-input" value={'手机号码'} /></lable>
+              <DatePicker  style={{ width: 184 }}  />
+              <Button type="ghost">查询</Button>
+            </div>
           </Col>
         </Row>
-        <Row>
+        <Row key="status2">
           <Table dataSource={dataSource} columns={columns} size="middle" />
         </Row>
+      </QueueAnim>
       </div>
     );
   }
@@ -113,14 +115,20 @@ const Statuscontent = React.createClass({
 
 
 const Status = React.createClass({
+  componentDidMount() {
+    let data = {
+      current: '4',
+      openKeys: ['sub1']
+    };
+    EventEmitter.dispatch('menuActive', data);
+	},
+  componentWillUnmount: function(){
+		EventEmitter.unSubscribe('changemenuActive');
+	},
   render() {
     return (
       <div>
-        <Topheader />
-        <Row>
-          <Col span="5"><Sidermenu /></Col>
-          <Col style={{paddingTop:'20px'}} span="18"><Statuscontent /></Col>
-        </Row>
+          <Statuscontent />
       </div>
     );
   }

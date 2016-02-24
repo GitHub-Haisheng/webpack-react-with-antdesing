@@ -1,0 +1,53 @@
+@import "bootstrap.css";
+@import "home.less";
+@import "send.less";
+
+
+.clearfix {
+  display: block;
+  zoom: 1;
+
+  &:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+.floatleft{
+  float: left;
+}
+.floatright{
+  float: right;
+}
+
+#app{
+  position: absolute;
+  top: 0px ;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
+}
+.topheader{
+  height: 95px;
+  position: absolute;top: 0px;left: 0px;right: 0px;
+}
+.sidermenu{
+  position: absolute;top: 95px;left: 0px;bottom: 0px;background: #404040;
+}
+.rightcontent{
+  position: absolute;top: 95px;left: 240px;right: 0px;bottom: 0px;padding: 20px;background: white;overflow-x:hidden;
+  z-index: 999;
+}
+
+.homeImage{
+  width: 110px;
+  height: auto;
+  float: left;
+  text-align: center;
+  margin-left: 10px;
+  margin-bottom: 20px
+}

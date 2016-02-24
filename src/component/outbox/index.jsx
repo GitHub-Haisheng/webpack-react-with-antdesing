@@ -1,6 +1,7 @@
 import React from 'react';
-import { Row,Col,Button, DatePicker,Table, Icon} from 'antd';
-
+import { Row,Col,Button, DatePicker,Table, Icon,QueueAnim} from 'antd';
+const RangePicker = DatePicker.RangePicker;
+import EventEmitter from '../../common/EventEmitter';
 
 const dataSource = [{
   key: '1',
@@ -126,29 +127,43 @@ const Outboxcontent = React.createClass({
   render() {
     return (
       <div>
-        <Row>
-          <Col style={{paddingTop:'20px'}} span="8"><h1>发件箱</h1></Col>
-          <Col style={{paddingTop:'20px'}} span="12" offset="4">
-            开始时间<DatePicker  format="yyyy/MM/dd HH:mm:ss" />
-            结束时间<DatePicker  format="yyyy/MM/dd HH:mm:ss" />
-          <Button type="ghost">查询</Button>
-            <Button type="ghost">返回</Button>
+      <QueueAnim>
+        <Row key="outbox1">
+          <Col span="24">
+            <h1 className="floatleft">发件箱</h1>
+            <div className="floatright">
+              <RangePicker  style={{ width: 184 }}  />
+              <Button type="ghost">查询</Button>
+            </div>
           </Col>
         </Row>
-        <Row>
+        <Row key="outbox2">
+          <QueueAnim>
           <Table dataSource={dataSource} columns={columns} size="middle" />
+          </QueueAnim>
         </Row>
+      </QueueAnim>
       </div>
     );
   }
 });
 
 const Outbox = React.createClass({
+  componentDidMount() {
+    let data = {
+      current: '2',
+      openKeys: ['sub1']
+    };
+    EventEmitter.dispatch('menuActive', data);
+	},
+  componentWillUnmount: function(){
+		EventEmitter.unSubscribe('changemenuActive');
+	},
   render() {
     return (
       <div>
         <Row>
-          <Col style={{paddingTop:'20px'}} span="18"><Outboxcontent /></Col>
+          <Outboxcontent />
         </Row>
       </div>
     );

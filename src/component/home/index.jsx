@@ -3,7 +3,7 @@ import React from 'react';
 import { Row,Col,QueueAnim } from 'antd';
 import { Link } from 'react-router'
 
-import './home.less';
+import EventEmitter from '../../common/EventEmitter';
 
 
 const data = [
@@ -38,12 +38,12 @@ const imgs = [
     },
     {
     name: '发件箱',
-    src: '/send',
+    src: '/outbox',
     img: require('../../images/home_electric.jpg')
     },
     {
     name: '收件箱',
-    src: '/send',
+    src: '/inbox',
     img: require('../../images/home_mode.jpg')
     },
     {
@@ -112,9 +112,9 @@ const HomeImageLink = React.createClass({
         <QueueAnim
           component="div"
           animConfig={[
-                        { opacity: [1, 0], translateY: [0, 50] },
-                        { opacity: [1, 0], translateY: [0, -50] }
-                      ]}
+            { opacity: [1, 0], translateY: [0, 50] },
+            { opacity: [1, 0], translateY: [0, 50] }
+          ]}
           >
           {listName}
         </QueueAnim>
@@ -138,6 +138,13 @@ const ImageLink = React.createClass({
 
 
 const Home = React.createClass({
+  componentDidMount() {
+    let data = {
+      current: '',
+      openKeys: []
+    };
+    EventEmitter.dispatch('menuActive', data);
+	},
   render() {
     return (
       <div>
