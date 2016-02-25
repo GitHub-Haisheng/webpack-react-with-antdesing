@@ -11,32 +11,7 @@ const Passwordeditcontent = React.createClass({
   },
   render() {
     return (
-      <Form horizontal onSubmit={this.handleSubmit}>
-        <FormItem
-          label="原密码："
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 8 }}>
-          <Input type="password"  placeholder="请输入密码" />
-        </FormItem>
-        <FormItem
-          label="新密码："
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 8 }}>
-          <Input type="password"  placeholder="请输入密码" />
-        </FormItem>
-        <FormItem
-          label="确认密码："
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 8 }}>
-          <Input type="password" placeholder="请输入密码" />
-        </FormItem>
-        <Row>
-          <Col span="6" offset="6" style={{ textAlign: 'center' }}>
-            <Button type="primary" htmlType="submit">确定</Button>
-            <Button type="ghost">重置</Button>
-          </Col>
-        </Row>
-      </Form>
+      <h1>1</h1>
     );
   }
 });

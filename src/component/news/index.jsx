@@ -131,7 +131,6 @@ const Newscontent = React.createClass({
           <Row key="outbox1">
             <Col span="24">
               <h1 className="floatleft">系统公告</h1>
-              
             </Col>
         </Row>
         <Row key="outbox2">

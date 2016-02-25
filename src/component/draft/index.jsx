@@ -4,6 +4,7 @@ import EventEmitter from '../../common/EventEmitter';
 
 
 const dataSource = [{
+  key:'1',
   xh: '1111',
   dylx: '2',
   dybt: '1',
@@ -11,6 +12,7 @@ const dataSource = [{
   dyzs: '2015-02-16 11:12:30',
   bz:'succsee',
 },{
+  key:'2',
   xh: '1111',
   dylx: '2',
   dybt: '1',
@@ -18,6 +20,7 @@ const dataSource = [{
   dyzs: '2015-02-16 11:12:30',
   bz:'succsee',
 },{
+  key:'3',
   xh: '1111',
   dylx: '2',
   dybt: '1',
@@ -25,6 +28,7 @@ const dataSource = [{
   dyzs: '2015-02-16 11:12:30',
   bz:'succsee',
 },{
+  key:'4',
   xh: '1111',
   dylx: '2',
   dybt: '1',
@@ -65,18 +69,18 @@ const Draftcontent = React.createClass({
     return (
       <div>
         <QueueAnim>
-        <Row key="draft1">
-          <Col span="24">
-            <h1 className="floatleft">常用短语</h1>
-            <div className="floatright">
-              <lable>手机号码<input style={{ width: 120,display:'inline' }} className="ant-input" value={'手机号码'} /></lable>
-              <DatePicker  style={{ width: 184 }}  />
-              <Button type="ghost">查询</Button>
-            </div>
-          </Col>
-        </Row>
-        <Row key="draft2">
-          <Table dataSource={dataSource} columns={columns} size="middle" />
+          <Row key="draft1">
+            <Col span="24">
+              <h1 className="floatleft">常用短语</h1>
+              <div className="floatright">
+                <lable>手机号码<input style={{ width: 120,display:'inline' }} className="ant-input" defaultValue={'手机号码'} /></lable>
+                <DatePicker  style={{ width: 184 }}  />
+                <Button type="ghost">查询</Button>
+              </div>
+            </Col>
+          </Row>
+          <Row key="draft2">
+            <Table dataSource={dataSource} columns={columns} size="middle" />
         </Row>
       </QueueAnim>
       </div>

@@ -80,12 +80,12 @@ const Inboxcontent = React.createClass({
     return (
       <div>
         <QueueAnim>
-        <Row key="inbox1">
-          <Col span="24">
-            <h1 className="floatleft">收件箱</h1>
-            <div className="floatright">
-              <lable>手机号码<input style={{ width: 120,display:'inline' }} className="ant-input" value={'手机号码'} /></lable>
-              <RangePicker  style={{ width: 184 }}  />
+          <Row key="inbox1">
+            <Col span="24">
+              <h1 className="floatleft">收件箱</h1>
+              <div className="floatright">
+                <lable>手机号码<input style={{ width: 120,display:'inline' }} className="ant-input" defaultValue={'手机号码'} /></lable>
+                <RangePicker  style={{ width: 184 }}  />
               <Button type="ghost">查询</Button>
             </div>
           </Col>
