@@ -127,22 +127,22 @@ const Outboxcontent = React.createClass({
   render() {
     return (
       <div>
-      <QueueAnim>
-        <Row key="outbox1">
-          <Col span="24">
-            <h1 className="floatleft">发件箱</h1>
-            <div className="floatright">
-              <RangePicker  style={{ width: 184 }}  />
-              <Button type="ghost">查询</Button>
-            </div>
-          </Col>
-        </Row>
-        <Row key="outbox2">
-          <QueueAnim>
-          <Table dataSource={dataSource} columns={columns} size="middle" />
-          </QueueAnim>
-        </Row>
-      </QueueAnim>
+        <QueueAnim>
+          <Row key="outbox1">
+            <Col span="24">
+              <h1 className="floatleft">发件箱</h1>
+              <div className="floatright">
+                <RangePicker  style={{ width: 184 }}  />
+                <Button type="ghost">查询</Button>
+              </div>
+            </Col>
+          </Row>
+          <Row key="outbox2">
+            <QueueAnim>
+              <Table dataSource={dataSource} columns={columns} size="middle" />
+            </QueueAnim>
+          </Row>
+        </QueueAnim>
       </div>
     );
   }

@@ -60,7 +60,7 @@ const columns = [
   key: 'bz',
 }];
 
-const Statuscontent = React.createClass({
+const Draftcontent = React.createClass({
   render() {
     return (
       <div>
@@ -99,7 +99,7 @@ const Status = React.createClass({
   render() {
     return (
       <div>
-          <Statuscontent />
+        <Draftcontent />
       </div>
     );
   }

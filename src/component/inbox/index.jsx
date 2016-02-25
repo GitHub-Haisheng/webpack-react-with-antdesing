@@ -75,7 +75,7 @@ const columns = [{
   key: 'bz',
 }];
 
-const Outboxcontent = React.createClass({
+const Inboxcontent = React.createClass({
   render() {
     return (
       <div>
@@ -113,7 +113,7 @@ const Inbox = React.createClass({
   render() {
     return (
       <div>
-          <Outboxcontent />
+        <Inboxcontent />
       </div>
     );
   }

@@ -50,11 +50,11 @@ const Sidermenu = React.createClass({
         selectedKeys={[this.state.current]}
         mode="inline" theme="dark">
         <SubMenu key="sub1" title={<span><Icon type="mail" /><span>发送短信</span></span>}>
-            <Menu.Item key="1"><Link to={`/send`}>短信群发</Link></Menu.Item>
-            <Menu.Item key="2"><Link to={`/outbox`}>发件箱</Link></Menu.Item>
-            <Menu.Item key="3"><Link to={`/inbox`}>收件箱</Link></Menu.Item>
-            <Menu.Item key="4"><Link to={`/status`}>状态查询</Link></Menu.Item>
-            <Menu.Item key="5"><Link to={`/draft`}>常用短语</Link></Menu.Item>
+          <Menu.Item key="1"><Link to={`/send`}>短信群发</Link></Menu.Item>
+          <Menu.Item key="2"><Link to={`/outbox`}>发件箱</Link></Menu.Item>
+          <Menu.Item key="3"><Link to={`/inbox`}>收件箱</Link></Menu.Item>
+          <Menu.Item key="4"><Link to={`/status`}>状态查询</Link></Menu.Item>
+          <Menu.Item key="5"><Link to={`/draft`}>常用短语</Link></Menu.Item>
         </SubMenu>
         <SubMenu key="sub2" title={<span><Icon type="message" /><span>个性短信</span></span>}>
           <Menu.Item key="6"><Link to={`/specialsend`}>个性短信</Link></Menu.Item>
