@@ -1,7 +1,10 @@
 import React from 'react';
 import { Row,Col,Button, DatePicker,Table, Icon,QueueAnim} from 'antd';
 const RangePicker = DatePicker.RangePicker;
-import EventEmitter from '../../common/EventEmitter';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {slideMenu} from '../../action/actions';
 
 const dataSource = [{
   key: '1',
@@ -150,15 +153,12 @@ const Outboxcontent = React.createClass({
 
 const Outbox = React.createClass({
   componentDidMount() {
-    let data = {
+    const data={
       current: '2',
       openKeys: ['sub1']
-    };
-    EventEmitter.dispatch('menuActive', data);
-	},
-  componentWillUnmount: function(){
-		EventEmitter.unSubscribe('changemenuActive');
-	},
+    }
+    this.props.slideMenu(data)
+  },
   render() {
     return (
       <div>
@@ -170,4 +170,15 @@ const Outbox = React.createClass({
   }
 });
 
-export default Outbox;
+function mapStateToProps(state) {
+    return {
+      current: state.smsApp.slidemenuactive.current,
+      openKeys: state.smsApp.slidemenuactive.openKeys
+    }
+};
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ slideMenu }, dispatch);
+};
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Outbox);

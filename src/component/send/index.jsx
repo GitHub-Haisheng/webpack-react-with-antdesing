@@ -1,6 +1,9 @@
 import React from 'react';
 import { QueueAnim,Button,InputNumber,Upload, Icon, message, Input, DatePicker, Modal,Checkbox } from 'antd';
-import EventEmitter from '../../common/EventEmitter';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {slideMenu} from '../../action/actions';
+
 
 const props = {
   action: '/upload.do',
@@ -113,15 +116,12 @@ const Sendcontent = React.createClass({
 
 const Send = React.createClass({
   componentDidMount() {
-    let data = {
+    const data={
       current: '1',
       openKeys: ['sub1']
-    };
-    EventEmitter.dispatch('menuActive', data);
-	},
-  componentWillUnmount: function(){
-		EventEmitter.unSubscribe('changemenuActive');
-	},
+    }
+    this.props.slideMenu(data)
+  },
   render() {
     return (
       <div>
@@ -131,4 +131,15 @@ const Send = React.createClass({
   }
 });
 
-export default Send;
+function mapStateToProps(state) {
+    return {
+      current: state.smsApp.slidemenuactive.current,
+      openKeys: state.smsApp.slidemenuactive.openKeys
+    }
+};
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ slideMenu }, dispatch);
+};
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Send);

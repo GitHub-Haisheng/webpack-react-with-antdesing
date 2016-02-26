@@ -3,16 +3,28 @@ import './common/lib';
 //react
 import {ReactDOM, render} from 'react-dom';
 import React from 'react';
-//redux
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
-
 //router
-import {Router, Route, useRouterHistory, IndexRoute} from 'react-router';
-import {createHashHistory} from 'history';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
+//redux
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+//store
+import smsApp from './reducer/reducers';
 
+
+const store = createStore(
+  combineReducers({
+    smsApp,
+    routing: routerReducer
+  }),window.devToolsExtension()
+)
+//let store = createStore(smsApp,window.devToolsExtension());
+
+
+const appHistory = syncHistoryWithStore(browserHistory, store)
 // 此处用于添加根路径
-const appHistory = useRouterHistory(createHashHistory)({queryKey: false});
+//const appHistory = useRouterHistory(createHashHistory)({queryKey: false});
 
 import App from './component/app/index';
 import Home from './component/home/index';
@@ -41,7 +53,7 @@ import Passwordedit from './component/passwordedit/index';
 import News from './component/news/index';
 
 render((
-
+<Provider store={store}>
   <Router history={appHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
@@ -71,5 +83,5 @@ render((
       <Route path="news" component={News}></Route>
     </Route>
   </Router>
-
+</Provider>
 ), document.getElementById('app'))

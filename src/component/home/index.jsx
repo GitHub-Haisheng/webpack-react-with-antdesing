@@ -3,7 +3,9 @@ import React from 'react';
 import { Row,Col,QueueAnim } from 'antd';
 import { Link } from 'react-router'
 
-import EventEmitter from '../../common/EventEmitter';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {slideMenu} from '../../action/actions';
 
 
 const data = [
@@ -139,12 +141,12 @@ const ImageLink = React.createClass({
 
 const Home = React.createClass({
   componentDidMount() {
-    let data = {
+    const data={
       current: '',
       openKeys: []
-    };
-    EventEmitter.dispatch('menuActive', data);
-	},
+    }
+    this.props.slideMenu(data)
+  },
   render() {
     return (
       <div>
@@ -190,4 +192,15 @@ const Home = React.createClass({
   }
 });
 
-export default Home;
+function mapStateToProps(state) {
+    return {
+      current: state.smsApp.slidemenuactive.current,
+      openKeys: state.smsApp.slidemenuactive.openKeys
+    }
+};
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ slideMenu }, dispatch);
+};
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

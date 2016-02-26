@@ -1,53 +1,43 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
-import { Link,History } from 'react-router';
-import EventEmitter from '../../common/EventEmitter';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {slideMenu} from '../../action/actions';
+
+function mapStateToProps(state) {
+    return {
+      current: state.smsApp.slidemenuactive.current,
+      openKeys: state.smsApp.slidemenuactive.openKeys
+    }
+};
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ slideMenu }, dispatch);
+};
 
 const Sidermenu = React.createClass({
-  getInitialState() {
-    return {
-      current: '',
-      openKeys: []
-    };
-  },
-  componentDidMount() {
-    var self = this;
-		EventEmitter.subscribe('menuActive', function(data){
-      self.setState({
-        current: data.current,
-        openKeys: data.openKeys
-			});
-		})
-	},
-  componentDidUpdate() {
-    var self = this;
-		EventEmitter.subscribe('menuActive', function(data){
-      self.setState({
-        current: data.current,
-        openKeys: data.openKeys
-			});
-		})
-  },
   handleClick(e) {
-    this.setState({
+    const data={
       current: e.key,
       openKeys: e.keyPath.slice(1)
-    });
+    }
+    this.props.slideMenu(data)
   },
   onToggle(info) {
-    this.setState({
+    const data={
       openKeys: info.open ? info.keyPath : info.keyPath.slice(1)
-    });
+    }
+    this.props.slideMenu(data)
   },
   render() {
     return (
       <Menu onClick={this.handleClick}
         style={{ width: 240 }}
-        openKeys={this.state.openKeys}
+        openKeys={this.props.openKeys}
         onOpen={this.onToggle}
         onClose={this.onToggle}
-        selectedKeys={[this.state.current]}
+        selectedKeys={[this.props.current]}
         mode="inline" theme="dark">
         <SubMenu key="sub1" title={<span><Icon type="mail" /><span>发送短信</span></span>}>
           <Menu.Item key="1"><Link to={`/send`}>短信群发</Link></Menu.Item>
@@ -85,4 +75,4 @@ const Sidermenu = React.createClass({
   }
 });
 
-export default Sidermenu;
+export default connect(mapStateToProps,mapDispatchToProps)(Sidermenu);
