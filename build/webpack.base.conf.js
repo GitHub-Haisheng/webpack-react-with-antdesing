@@ -55,5 +55,7 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true
   },
-
+  plugins : [ new webpack.ProvidePlugin({// 全局依赖jQuery,不需要import了
+  		$ : "jquery"
+	})],
 }

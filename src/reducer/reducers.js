@@ -4,7 +4,9 @@ import { SLIDE_MENU } from '../action/actions'
 
 const initialState = {
     current: '',
-    openKeys: []
+    openKeys: [],
+    smsbalance:'',
+    username:'',
 };
 
 function slidemenuactive(state = initialState, action) {//使用 ES6 参数默认值语法 来精简代码

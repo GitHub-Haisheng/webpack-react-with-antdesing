@@ -1,36 +1,12 @@
 import React from 'react';
 
-import { Row,Col,QueueAnim } from 'antd';
+import { Row,Col,QueueAnim,Modal } from 'antd';
 import { Link } from 'react-router'
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {slideMenu} from '../../action/actions';
 
-
-const data = [
-    {
-    name: '温馨提示',
-    url: '1',
-    datatime: '2016-01-01',
-    },
-    {
-    name: '温馨提示',
-    url: '2',
-    datatime: '2016-01-01',
-    },
-    {
-    name: '温馨提示',
-    url: '3',
-    datatime: '2016-01-01',
-    },
-    {
-    name: '温馨提示',
-    url: '4',
-    datatime: '2016-01-01',
-    },
-
-];
 
 const imgs = [
     {
@@ -82,9 +58,26 @@ const imgs = [
 
 
 const HomeList = React.createClass({
+  getInitialState() {
+    return {
+      items:[],
+      visible: false,
+    };
+  },
+  componentDidMount() {
+    $.get(this.props.source, function(result) {
+      var items = result.data;
+      console.log(items);
+      if (this.isMounted()) {
+        this.setState({
+          items: items,
+        });
+      }
+    }.bind(this));
+  },
   render() {
-    var listName = this.props.data.map(function(list,index){
-      return <Item key={index} item={list}></Item>
+    var listName = this.state.items.map(function(item,index){
+      return <Item key={index} item={item}></Item>
     });
     return (
       <ul className="homenewslist">
@@ -95,11 +88,35 @@ const HomeList = React.createClass({
 });
 
 const Item = React.createClass({
+  getInitialState() {
+    return {
+      visible: false,
+    };
+  },
+  handleOk() {
+    this.setState({
+      visible: false
+    });
+  },
+  handleCancel() {
+    this.setState({
+      visible: false
+    });
+  },
+  homelistClick() {
+    this.setState({
+      visible: true,
+    });
+  },
   render() {
     return (
       <li>
-          <a href={this.props.item.url}>{this.props.item.name}</a>
-          <span>{this.props.item.datatime}</span>
+        <Modal title={this.props.item.title} visible={this.state.visible}
+          onOk={this.handleOk} onCancel={this.handleCancel}>
+          <p>时间：{this.props.item.create_at}</p>
+        </Modal>
+        <a href="#" onClick={this.homelistClick}>{this.props.item.title}</a>
+        <span>{this.props.item.create_at}</span>
       </li>
     );
   }
@@ -150,23 +167,23 @@ const Home = React.createClass({
   render() {
     return (
       <div>
-          <Row>
-            <QueueAnim>
-              <Col span="12" key="home1">
-                <QueueAnim component="div">
-                  <div key="home1a">
-                  <h3>当前余额(条)</h3>
-                  <p>92</p>
-                  </div>
-                  <br/>
-                  <div key="home1b">
-                  <h3>系统公告</h3>
-                  <HomeList data={data}></HomeList>
-                  </div>
-                  <br/>
-                  <div key="home1c">
-                  <h3>注意事项</h3>
-                  <p className="border">&nbsp;&nbsp;&nbsp;&nbsp;发送短信凡涉及以下内容的请不要发送，如果造成严重后果的我们将追究发送人的法律责任。谢谢配合！<br/>
+        <Row>
+          <QueueAnim>
+            <Col span="12" key="home1">
+              <QueueAnim component="div">
+                <div key="home1a">
+                  <h3 className="hometitle">当前余额(条)</h3>
+                  <p className="homeyue">92</p>
+                </div>
+                <br/>
+                <div key="home1b">
+                  <h3 className="hometitle">系统公告</h3>
+                  <HomeList source="https://cnodejs.org/api/v1/topics?limit=5"></HomeList>
+                </div>
+                <br/>
+                <div key="home1c">
+                  <h3 className="hometitle">注意事项</h3>
+                  <p className="alert alert-danger border">&nbsp;&nbsp;&nbsp;&nbsp;发送短信凡涉及以下内容的请不要发送，如果造成严重后果的我们将追究发送人的法律责任。谢谢配合！<br/>
                     ·危害国家安全，泄露国家机密，颠覆国家政权，破坏国家统一的；<br/>
                     ·损害国家荣誉和利益的；<br/>
                     ·煽动民族仇恨、民族歧视，破坏民族团结的；<br/>
