@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Icon } from 'antd';
+import { Menu, Icon , notification} from 'antd';
 const SubMenu = Menu.SubMenu;
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
@@ -17,6 +17,12 @@ function mapDispatchToProps(dispatch) {
 };
 
 const Sidermenu = React.createClass({
+  componentDidMount() {
+    notification['info']({
+      message: '系统提示',
+      description: '尊敬的客户您好：商超短信请按照格式：【签名】+尊称+内容+退订回T 发送，谢谢配合！'
+    });
+  },
   handleClick(e) {
     const data={
       current: e.key,

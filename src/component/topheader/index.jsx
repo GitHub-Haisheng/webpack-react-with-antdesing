@@ -1,9 +1,15 @@
 import React from 'react';
 import { Menu, Breadcrumb } from 'antd';
-import './topheader.less';
 import { Link } from 'react-router'
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {setSing} from '../../action/actions';
+
 const Topheader = React.createClass({
+  handleClick() {
+    this.props.setSing(false)
+  },
   render() {
     return (
       <div className="ant-layout-ceiling-demo">
@@ -14,7 +20,7 @@ const Topheader = React.createClass({
               <li>欢迎您，</li>
               <li>XXXXXX</li>
               <li>|</li>
-              <li>退出</li>
+              <li className="topheaderlink" onClick={this.handleClick}>退出</li>
             </ul>
           </div>
         </div>
@@ -30,4 +36,14 @@ const Topheader = React.createClass({
   }
 });
 
-export default Topheader;
+function mapStateToProps(state) {
+    return {
+      singin: state.smsApp.setlogin.singin,
+    }
+};
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setSing }, dispatch);
+};
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Topheader);

@@ -12,3 +12,6 @@ export const SLIDE_MENU = 'SLIDE_MENU';
 export function slideMenu(menuarray) {
   return { type: SLIDE_MENU, menuarray:menuarray }
 }
+export function setSing(booleans) {
+  return { type: "SET_SINGIN", booleans }
+}

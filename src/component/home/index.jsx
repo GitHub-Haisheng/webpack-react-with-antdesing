@@ -163,6 +163,7 @@ const Home = React.createClass({
       openKeys: []
     }
     this.props.slideMenu(data)
+
   },
   render() {
     return (

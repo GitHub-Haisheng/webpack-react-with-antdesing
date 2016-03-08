@@ -2,14 +2,17 @@ import { combineReducers } from 'redux'
 import { SLIDE_MENU } from '../action/actions'
 
 
-const initialState = {
+const slidemenuState = {
     current: '',
     openKeys: [],
     smsbalance:'',
+};
+const singinState = {
     username:'',
+    singin:false
 };
 
-function slidemenuactive(state = initialState, action) {//使用 ES6 参数默认值语法 来精简代码
+function slidemenuactive(state = slidemenuState, action) {
   switch (action.type) {
     case SLIDE_MENU:
       return Object.assign({}, state, {
@@ -20,9 +23,20 @@ function slidemenuactive(state = initialState, action) {//使用 ES6 参数默�
       return state;
   }
 }
+function setlogin(state = singinState, action) {
+  switch (action.type) {
+    case "SET_SINGIN":
+      return Object.assign({}, state, {
+        singin: action.booleans,
+      });
+    default:
+      return state;
+  }
+}
 
 const smsApp = combineReducers({
-  slidemenuactive
+  slidemenuactive,
+  setlogin
 })
 
 export default smsApp
