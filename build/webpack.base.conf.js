@@ -9,10 +9,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    // alias: {
-    //         'react': 'react-lite',
-    //         'react-dom': 'react-lite'
-    // }
   },
   module: {
     loaders: [

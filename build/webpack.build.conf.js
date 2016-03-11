@@ -25,7 +25,7 @@ config.plugins = (config.plugins || []).concat([
 ])
 config.output = {
   path: path.resolve(__dirname, '../dist/static'),
-  publicPath: 'static/',
+  publicPath: '/static/',
   chunkFilename: "[id].[hash].bundle.js",
   filename: '[name].min.js'
 }
