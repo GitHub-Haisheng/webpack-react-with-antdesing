@@ -1,5 +1,6 @@
+import QueueAnim from 'rc-queue-anim';
 import React from 'react';
-import { Row,Col,Button, DatePicker,Table, Icon,QueueAnim} from 'antd';
+import { Row,Col,Button, DatePicker,Table, Icon} from 'antd';
 const RangePicker = DatePicker.RangePicker;
 
 import { connect } from 'react-redux';

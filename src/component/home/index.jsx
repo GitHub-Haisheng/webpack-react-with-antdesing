@@ -1,6 +1,7 @@
+import QueueAnim from 'rc-queue-anim';
 import React from 'react';
 
-import { Row,Col,QueueAnim,Modal } from 'antd';
+import { Row,Col,Modal } from 'antd';
 import { Link } from 'react-router'
 
 import { connect } from 'react-redux';

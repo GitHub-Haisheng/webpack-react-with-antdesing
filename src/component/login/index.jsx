@@ -47,7 +47,7 @@ const Loginform = React.createClass({
     });
     return (
       <div className="logincontainer">
-        <h1>中国移动商务信息平台</h1>
+        <h1>短息通道信息管理平台</h1>
         <Form horizontal>
           <FormItem
             {...formItemLayout}

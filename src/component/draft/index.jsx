@@ -1,5 +1,6 @@
+import QueueAnim from 'rc-queue-anim';
 import React from 'react';
-import { Row,Col,Button, DatePicker,Table, Icon, Input,QueueAnim} from 'antd';
+import { Row,Col,Button, DatePicker,Table, Icon, Input} from 'antd';
 import EventEmitter from '../../common/EventEmitter';
 
 

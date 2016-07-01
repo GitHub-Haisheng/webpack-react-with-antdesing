@@ -1,5 +1,6 @@
+import QueueAnim from 'rc-queue-anim';
 import React from 'react';
-import { Row,Col,Button,Table, Icon,QueueAnim,Modal} from 'antd';
+import { Row,Col,Button,Table, Icon,Modal} from 'antd';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

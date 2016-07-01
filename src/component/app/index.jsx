@@ -1,5 +1,6 @@
+import QueueAnim from 'rc-queue-anim';
 import React from 'react';
-import { QueueAnim} from 'antd';
+
 import { connect } from 'react-redux';
 
 import Sidermenu from '../menu/index';

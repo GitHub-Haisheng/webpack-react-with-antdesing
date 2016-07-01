@@ -1,5 +1,6 @@
+import QueueAnim from 'rc-queue-anim';
 import React from 'react';
-import { QueueAnim,Button,InputNumber,Upload, Icon, message, Input, DatePicker, Modal,Checkbox } from 'antd';
+import { Button,InputNumber,Upload, Icon, message, Input, DatePicker, Modal,Checkbox } from 'antd';
 import EventEmitter from '../../common/EventEmitter';
 
 const props = {
