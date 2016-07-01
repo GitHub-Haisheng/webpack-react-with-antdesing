@@ -1,2 +1,2 @@
-import 'antd/style/index.less';
+import 'antd/dist/antd.less';
 import "../style/index.less";

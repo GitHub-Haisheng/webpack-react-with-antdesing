@@ -17,7 +17,7 @@ const store = createStore(
   combineReducers({
     smsApp,
     routing: routerReducer
-  }),window.devToolsExtension()
+  }),window.devToolsExtension ? window.devToolsExtension() : f => f
 )
 //let store = createStore(smsApp,window.devToolsExtension());
 

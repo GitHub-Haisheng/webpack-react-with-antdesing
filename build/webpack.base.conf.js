@@ -47,6 +47,11 @@ module.exports = {
       {test: /\.svg$/,loader: "url?limit=8192?name=fonts/[name].[ext]"}
     ]
   },
+  externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM',
+      'jquery': 'jQuery'
+  },
   devServer: {
     historyApiFallback: true,
     noInfo: true
